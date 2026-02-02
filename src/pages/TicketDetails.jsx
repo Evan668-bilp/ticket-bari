@@ -4,6 +4,7 @@ import axios from 'axios';
 import Countdown from 'react-countdown';
 import useAuth from '../hooks/useAuth';
 import { toast } from 'react-toastify';
+import Loading from "../components/Loading";
 
 const TicketDetails = () => {
   const { id } = useParams();

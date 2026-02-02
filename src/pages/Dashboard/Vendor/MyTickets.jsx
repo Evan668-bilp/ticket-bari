@@ -5,7 +5,7 @@ const MyTickets = () => {
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/tickets/my', { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.get('http://localhost:5000/api/tickets/my', { headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` } })
       .then(res => setTickets(res.data));
   }, []);
 
@@ -14,7 +14,7 @@ const MyTickets = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/tickets/${id}`, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.delete(`http://localhost:5000/api/tickets/${id}`, { headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` } })
       .then(() => setTickets(tickets.filter(t => t._id !== id)));
   };
 

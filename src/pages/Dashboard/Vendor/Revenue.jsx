@@ -6,7 +6,7 @@ const Revenue = () => {
   const [data, setData] = useState({ totalRevenue: 0, totalSold: 0, totalAdded: 0 });
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/revenue', { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.get('http://localhost:5000/api/revenue', { headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` } })
       .then(res => setData(res.data));
   }, []);
 

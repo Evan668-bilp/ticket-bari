@@ -32,7 +32,12 @@ const AuthProvider = ({ children }) => {
 
 
         axios.post('http://localhost:5000/api/auth/jwt', { email: currentUser.email })
-          .then(res => localStorage.setItem('token', res.data.token))
+          // .then(res => localStorage.setItem('token', res.data.token))
+
+          .then(res => {
+          localStorage.setItem('token', res.data.token);
+          console.log('Token saved:', res.data.token); // ← এটা দেখো কনসোলে
+        })
           .catch(err => toast.error(err.message));
         axios.post('http://localhost:5000/api/auth/users', { name: currentUser.displayName, email: currentUser.email, photo: currentUser.photoURL });
       } 

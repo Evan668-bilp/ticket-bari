@@ -15,7 +15,7 @@ const AdminProfile = () => {
     const fetchAdminData = async () => {
       try {
         const res = await axios.get('http://localhost:5000/api/users/me', {
-          headers: { authorization: `Bearer ${localStorage.getItem('token')}` }
+          headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` }
         });
         setAdminData(res.data);
       } catch (err) {
