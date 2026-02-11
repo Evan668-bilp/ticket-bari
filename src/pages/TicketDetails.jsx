@@ -13,7 +13,7 @@ const TicketDetails = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/tickets/${id}`).then(res => setTicket(res.data));
+    axios.get(`${import.meta.env.VITE_API_URL}/api/tickets/${id}`).then(res => setTicket(res.data));
   }, [id]);
 
   const handleBook = () => {

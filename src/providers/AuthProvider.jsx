@@ -3,6 +3,8 @@ import React, { createContext, useEffect, useState } from 'react';
 import { auth } from "../firebase.config";
 
 
+
+
 // import { auth } from '../firebase/firebase.config';
 
 
@@ -45,7 +47,7 @@ const AuthProvider = ({ children }) => {
       else {
         localStorage.removeItem('token');
       }
-      setLoading(false);
+      setLoading(false); 
     });
     return () => unsubscribe();
   }, []);

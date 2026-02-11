@@ -9,7 +9,7 @@ const DashboardLayout = () => {
   const [role, setRole] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/users/me', { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.get('${import.meta.env.VITE_API_URL}/api/users/me', { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(res => setRole(res.data.role));
   }, []);
 

@@ -5,22 +5,22 @@ const ManageUsers = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/users', { headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` } })
+    axios.get('${import.meta.env.VITE_API_URL}/api/users', { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(res => setUsers(res.data));
   }, []);
 
   const handleMakeAdmin = (id) => {
-    axios.patch(`http://localhost:5000/api/users/${id}/role`, { role: 'admin' }, { headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` } })
+    axios.patch(`http://localhost:5000/api/users/${id}/role`, { role: 'admin' }, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(() => setUsers(users.map(u => u._id === id ? { ...u, role: 'admin' } : u)));
   };
 
   const handleMakeVendor = (id) => {
-    axios.patch(`http://localhost:5000/api/users/${id}/role`, { role: 'vendor' }, { headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` } })
+    axios.patch(`http://localhost:5000/api/users/${id}/role`, { role: 'vendor' }, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(() => setUsers(users.map(u => u._id === id ? { ...u, role: 'vendor' } : u)));
   };
 
   const handleMarkFraud = (id) => {
-    axios.patch(`http://localhost:5000/api/users/${id}/fraud`, {}, { headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` } })
+    axios.patch(`http://localhost:5000/api/users/${id}/fraud`, {}, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(() => setUsers(users.map(u => u._id === id ? { ...u, isFraud: true } : u)));
   };
 

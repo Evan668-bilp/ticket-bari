@@ -5,17 +5,17 @@ const ManageTickets = () => {
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/tickets/all', { headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` } })
+    axios.get('${import.meta.env.VITE_API_URL}/api/tickets/all', { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(res => setTickets(res.data));
   }, []);
 
   const handleApprove = (id) => {
-    axios.patch(`http://localhost:5000/api/tickets/${id}/approve`, {}, { headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` } })
+    axios.patch(`http://localhost:5000/api/tickets/${id}/approve`, {}, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(() => setTickets(tickets.map(t => t._id === id ? { ...t, status: 'approved' } : t)));
   };
 
   const handleReject = (id) => {
-    axios.patch(`http://localhost:5000/api/tickets/${id}/reject`, {}, { headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` } })
+    axios.patch(`http://localhost:5000/api/tickets/${id}/reject`, {}, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(() => setTickets(tickets.map(t => t._id === id ? { ...t, status: 'rejected' } : t)));
   };
 

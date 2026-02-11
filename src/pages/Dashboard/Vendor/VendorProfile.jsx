@@ -15,8 +15,8 @@ const VendorProfile = () => {
 
     const fetchVendorData = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/users/me', {
-          headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` }
+        const res = await axios.get('${import.meta.env.VITE_API_URL}/api/users/me', {
+          headers: { authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         setVendorData(res.data); // এখানে role, isFraud, createdAt ইত্যাদি আসবে
       } catch (err) {

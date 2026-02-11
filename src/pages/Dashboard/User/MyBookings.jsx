@@ -12,7 +12,7 @@ const MyBookings = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/bookings/my', { headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` } })
+    axios.get('${import.meta.env.VITE_API_URL}/api/bookings/my', { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(res => setBookings(res.data));
   }, []);
 
