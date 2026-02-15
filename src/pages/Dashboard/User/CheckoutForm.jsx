@@ -14,7 +14,7 @@ const CheckoutForm = ({ booking, onClose }) => {
     setProcessing(true);
 
     try {
-      const { data } = await axios.post('http://localhost:5000/api/payments/create-payment-intent', { bookingId: booking._id }, {
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/api/payments/create-payment-intent`, { bookingId: booking._id }, {
         headers: { authorization: `Bearer ${localStorage.getItem('token')}` }
       });
 

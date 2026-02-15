@@ -20,7 +20,7 @@ const TicketDetails = () => {
     if (quantity > ticket.quantity || quantity < 1) return toast.error('Invalid quantity');
     if (new Date(ticket.departure) < new Date()) return toast.error('Ticket expired');
 
-    axios.post('http://localhost:5000/api/bookings', {
+    axios.post(`${import.meta.env.VITE_API_URL}/api/bookings`, {
       userEmail: user.email,
       ticketId: id,
       quantity,

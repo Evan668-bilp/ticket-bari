@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
 
 
-        axios.post('http://localhost:5000/api/auth/jwt', { email: currentUser.email })
+        axios.post(`${import.meta.env.VITE_API_URL}/api/auth/jwt`, { email: currentUser.email })
           // .then(res => localStorage.setItem('token', res.data.token))
 
           .then(res => {
@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
           console.log('Token saved:', res.data.token); // ← এটা দেখো কনসোলে
         })
           .catch(err => toast.error(err.message));
-        axios.post('http://localhost:5000/api/auth/users', { name: currentUser.displayName, email: currentUser.email, photo: currentUser.photoURL });
+        axios.post(`${import.meta.env.VITE_API_URL}/api/auth/users`, { name: currentUser.displayName, email: currentUser.email, photo: currentUser.photoURL });
       } 
       
       else {

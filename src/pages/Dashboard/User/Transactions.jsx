@@ -5,7 +5,7 @@ const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    axios.get('${import.meta.env.VITE_API_URL}/api/transactions', { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.get(`${import.meta.env.VITE_API_URL}/api/transactions`, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(res => setTransactions(res.data));
   }, []);
 

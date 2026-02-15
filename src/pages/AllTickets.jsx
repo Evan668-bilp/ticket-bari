@@ -17,7 +17,7 @@ const AllTickets = () => {
   // }, [from, to, type, sort, page]);
 
 useEffect(() => {
-  const url = `http://localhost:5000/api/tickets?from=${from}&to=${to}&type=${type}&sort=${sort}&page=${page}&limit=${limit}`;
+  const url = `${import.meta.env.VITE_API_URL}/api/tickets?from=${from}&to=${to}&type=${type}&sort=${sort}&page=${page}&limit=${limit}`;
   axios.get(url)
     .then(res => {
       // ← এখানে শুধু res.data.tickets নাও

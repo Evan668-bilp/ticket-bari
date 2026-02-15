@@ -42,7 +42,7 @@ const AddTicket = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/tickets', formData, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.post(`${import.meta.env.VITE_API_URL}/api/tickets`, formData, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(() => toast.success('Ticket added!'))
       .catch(err => toast.error(err.message));
   };

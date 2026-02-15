@@ -6,12 +6,12 @@ const Advertise = () => {
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
-    axios.get('${import.meta.env.VITE_API_URL}/api/tickets/approved', { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.get(`${import.meta.env.VITE_API_URL}/api/tickets/approved`, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(res => setTickets(res.data));
   }, []);
 
   const handleToggleAdvertise = (id, isAdvertised) => {
-    axios.patch(`http://localhost:5000/api/tickets/${id}/advertise`, { isAdvertised: !isAdvertised }, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.patch(`${import.meta.env.VITE_API_URL}/api/tickets/${id}/advertise`, { isAdvertised: !isAdvertised }, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(() => {
         setTickets(tickets.map(t => t._id === id ? { ...t, isAdvertised: !isAdvertised } : t));
       })

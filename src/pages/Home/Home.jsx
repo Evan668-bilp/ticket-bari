@@ -7,9 +7,11 @@ const Home = () => {
   const [latest, setLatest] = useState([]);
 
   useEffect(() => {
-    axios.get('${import.meta.env.VITE_API_URL}/api/tickets/advertised').then(res => setAdvertised(res.data));
-    axios.get('${import.meta.env.VITE_API_URL}/api/tickets/latest').then(res => setLatest(res.data));
+    axios.get(`${import.meta.env.VITE_API_URL}/api/tickets/advertised`).then(res => setAdvertised(res.data));
+    axios.get(`${import.meta.env.VITE_API_URL}/api/tickets/latest`).then(res => setLatest(res.data));
   }, []);
+  console.log("API URL:", import.meta.env.VITE_API_URL);
+
 
   return (
     <div>

@@ -6,7 +6,7 @@ const Revenue = () => {
   const [data, setData] = useState({ totalRevenue: 0, totalSold: 0, totalAdded: 0 });
 
   useEffect(() => {
-    axios.get('${import.meta.env.VITE_API_URL}/api/revenue', { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.get(`${import.meta.env.VITE_API_URL}/api/revenue`, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(res => setData(res.data));
   }, []);
 

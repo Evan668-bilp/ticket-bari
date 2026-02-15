@@ -5,17 +5,17 @@ const RequestedBookings = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    axios.get('${import.meta.env.VITE_API_URL}/api/bookings/requested', { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.get(`${import.meta.env.VITE_API_URL}/api/bookings/requested`, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(res => setBookings(res.data));
   }, []);
 
   const handleAccept = (id) => {
-    axios.patch(`http://localhost:5000/api/bookings/${id}/accept`, {}, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.patch(`${import.meta.env.VITE_API_URL}/api/bookings/${id}/accept`, {}, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(() => setBookings(bookings.map(b => b._id === id ? { ...b, status: 'accepted' } : b)));
   };
 
   const handleReject = (id) => {
-    axios.patch(`http://localhost:5000/api/bookings/${id}/reject`, {}, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.patch(`${import.meta.env.VITE_API_URL}/api/bookings/${id}/reject`, {}, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(() => setBookings(bookings.map(b => b._id === id ? { ...b, status: 'rejected' } : b)));
   };
 
